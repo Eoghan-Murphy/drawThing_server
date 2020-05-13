@@ -14,10 +14,17 @@ router.get("/posts", async (req, res) => {
 
 router.post("/posts", async (req, res) => {
     try{
+        /// authenticate user and get reference here
+
         const post = new Post({
-            title: req.body.title,
-            content: req.body.content
+            image: req.body.image,
+            time_created: Date.now(),
+            likes: [],
+            comments: []
         })
+
+        // add if remix or comment here
+
         await post.save()
         res.send(post)
     } catch (error){
